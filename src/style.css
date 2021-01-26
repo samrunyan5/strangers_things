@@ -1,0 +1,11 @@
+input {
+    border: 1px solid black;
+    margin: 2px;
+    padding: 2px;
+}
+
+button {
+    border: 1px solid black;
+    margin: 2px;
+    padding: 2px;
+}

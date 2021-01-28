@@ -1,13 +1,12 @@
 import React from 'react';
-import '../style.css';
 
-const Login = ({username, setUsername, password, setPassword, setToken, setLogin}) => {
+const Register = ({username, setUsername, password, setPassword, setToken, setLogin}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log('username: ', username)
         console.log('password: ', password)
 
-        const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/users/login`, {
+        const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,7 +20,6 @@ const Login = ({username, setUsername, password, setPassword, setToken, setLogin
         })
 
         const data = await response.json()
-        console.log('data: ', data)
         const token = !data.success ? '' : data.data.token
         setToken(token)
         setUsername('')
@@ -30,26 +28,26 @@ const Login = ({username, setUsername, password, setPassword, setToken, setLogin
 
     const handleLogin = (event) => {
         event.preventDefault()
-        setLogin(false)
+        setLogin(true)
     }
 
     return (<>
-        <h3>Login to Your Account</h3>
+        <h3>Register for an Account</h3>
         <form onSubmit={handleSubmit}>
-            <div className='login'>
+            <div className='register'>
             <div>
-                <div>Username </div>
+                <div>Create Username </div>
                 <input type='text' value={username} placeholder='Username' minLength='8' maxLength='20' required onChange={event => setUsername(event.target.value)}></input>
             </div>
             <div>
-                <div>Password </div>
+                <div>Create Password </div>
                 <input type='password' value={password} placeholder='Password' minLength='8' maxLength='20' required onChange={event => setPassword(event.target.value)}></input>
             </div>
-            <button type='submit'>Login</button>
+            <button type='submit'>Register</button>
             </div>
         </form>
-        <button onClick={handleLogin}>Not yet registered? Sign up here!</button>
+        <button onClick={handleLogin}>Already registered? Login here!</button>
     </>)
 }
 
-export default Login;
+export default Register;

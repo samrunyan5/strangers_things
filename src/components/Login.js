@@ -1,6 +1,7 @@
 import React from 'react';
+import '../style.css';
 
-const Login = ({username, setUsername, password, setPassword, setToken}) => {
+const Login = ({username, setUsername, password, setPassword, setToken, setLogin}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log('username: ', username)
@@ -27,7 +28,12 @@ const Login = ({username, setUsername, password, setPassword, setToken}) => {
         setPassword('')
     }
 
-    return ( <>
+    const handleLogin = (event) => {
+        event.preventDefault()
+        setLogin(false)
+    }
+
+    return (<>
         <h3>Login to Your Account</h3>
         <form onSubmit={handleSubmit}>
             <div className='login'>
@@ -42,6 +48,7 @@ const Login = ({username, setUsername, password, setPassword, setToken}) => {
             <button type='submit'>Login</button>
             </div>
         </form>
+        <button onClick={handleLogin}>Not yet registered? Sign up here!</button>
     </>)
 }
 

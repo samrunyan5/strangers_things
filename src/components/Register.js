@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-const Register = ({username, setUsername, password, setPassword, setToken}) => {
+const Register = ({username, setUsername, password, setPassword, setToken, setLogin}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log('username: ', username)
@@ -27,19 +26,31 @@ const Register = ({username, setUsername, password, setPassword, setToken}) => {
         setPassword('')
 
         if (data.success) {
-            return (<>
-                {console.log(data.data.message)}
-                <div id='register-success'>{data.data.message}</div>
-            </>)
+            return alert('heck')
+            // alert(data.data.message)
         } else {
-            return (<>
-                {console.log(data.error.message)}
-                <div id='register-error'>{data.error.message}</div>
-            </>)
+            return alert('double heck')
+            // alert(data.error.message)
+
+        // if (data.success) {
+        //     return (<>
+        //         {console.log(data.data.message)}
+        //         <div id='register-success'>{data.data.message}</div>
+        //     </>)
+        // } else {
+        //     return (<>
+        //         {console.log(data.error.message)}
+        //         <div id='register-error'>{data.error.message}</div>
+        //     </>)
         }
     }
 
-    return ( <>
+    const handleLogin = (event) => {
+        event.preventDefault()
+        setLogin(true)
+    }
+
+    return (<>
         <h3>Register for an Account</h3>
         <form onSubmit={handleSubmit}>
             <div className='register'>
@@ -54,6 +65,7 @@ const Register = ({username, setUsername, password, setPassword, setToken}) => {
             <button type='submit'>Register</button>
             </div>
         </form>
+        <button onClick={handleLogin}>Already registered? Login here!</button>
     </>)
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import '../style.css';
 
-const AccountForm = ({type, setToken, setUser}) => {
+const AccountForm = ({type, setToken, setUser, setAccountFormStatus}) => {
     const [username, setUsername] = React.useState('')
     const [password, setPassword] = React.useState('')
     const title = type === 'login' ? 'Login' : 'Register'
@@ -11,8 +11,6 @@ const AccountForm = ({type, setToken, setUser}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('username: ', username)
-        console.log('password: ', password)
 
         const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/users/${type}`, {
             method: 'POST',
@@ -26,9 +24,10 @@ const AccountForm = ({type, setToken, setUser}) => {
                 }
             })
         })
-
         const data = await response.json()
+        setAccountFormStatus(data.success ? data.data.message : <div>{data.error.message}.</div>)
         console.log('data: ', data)
+
         const token = data.success ? data.data.token : ''
         if (token) {
             setToken(token)
@@ -39,8 +38,7 @@ const AccountForm = ({type, setToken, setUser}) => {
                 }
             })
             const meData = await response.json()
-            console.log('other data: ', meData)
-            setUser(meData)
+            setUser(meData.data)
         }
         setUsername('')
         setPassword('')

@@ -17,3 +17,7 @@ button {
     margin: 2px;
     padding: 2px;
 }
+
+.loggedOut {
+    display: none;
+}

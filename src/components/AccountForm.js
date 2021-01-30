@@ -1,10 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import '../style.css';
+import {Link, useHistory} from 'react-router-dom';
 
 const AccountForm = ({type, setToken, setUser, setAccountFormStatus}) => {
     const [username, setUsername] = React.useState('')
     const [password, setPassword] = React.useState('')
+    const history = useHistory()
     const title = type === 'login' ? 'Login' : 'Register'
     const oppositeTitle = type === 'login' ? 'Not yet registered? Sign up here!' : 'Already registered? Login here!'
     const oppositeType = type === 'login' ? 'register' : 'login'
@@ -39,9 +39,10 @@ const AccountForm = ({type, setToken, setUser, setAccountFormStatus}) => {
             })
             const meData = await response.json()
             setUser(meData.data)
+            setUsername('')
+            setPassword('')
+            history.push('/')
         }
-        setUsername('')
-        setPassword('')
     }
 
     return (<>

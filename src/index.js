@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import './style.css';
 
 import {
     AccountForm,
-    Home
+    Home,
+    Posts
 } from './components';
 
 const App = () => {
@@ -31,10 +31,12 @@ const App = () => {
             <Link to='/login' className={!user.username ? '' : 'loggedOut'}>LOGIN</Link>
         </nav>
         <br />
-        {user.username ? <div>Hello {user.username}!</div> : ''}
         {accountFormStatus ? accountFormStatus : ''}
         <Route exact path='/'>
             <Home user={user} setAccountFormStatus={setAccountFormStatus} />
+        </Route>
+        <Route path='/posts'>
+            <Posts setAccountFormStatus={setAccountFormStatus} token={token} />
         </Route>
         <Route path='/login'>
             <AccountForm type={'login'} setToken={setToken} setUser={setUser} setAccountFormStatus={setAccountFormStatus} /> 

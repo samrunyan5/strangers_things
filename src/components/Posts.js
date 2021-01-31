@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 
-const Posts = ({setAccountFormStatus, token}) => {
-    const [postList, setPostList] = React.useState([])
+const Posts = ({setAccountFormStatus, token, postList, setPostList}) => {
     setAccountFormStatus('')
 
     useEffect(async () => {
@@ -14,6 +13,18 @@ const Posts = ({setAccountFormStatus, token}) => {
         const { data: {posts} } = await response.json()
         setPostList(posts)
     }, [])
+
+    // const handleDelete = async (event) => {
+    //     event.preventDefault();
+
+    //     // const response = await fetch(``)
+    // }
+
+    // const handleView = (event) => {
+    //     event.preventDefault();
+
+
+    // }
 
     return (<>
         <h2>POSTS</h2>
@@ -29,6 +40,7 @@ const Posts = ({setAccountFormStatus, token}) => {
                 <p>Location: {location}</p>
                 {token && !isAuthor ? <button>Send Message</button> : ''}
                 {token && isAuthor ? <button>View</button> : ''}
+                {token && isAuthor ? <button>Delete</button> : ''}
             </div>
         })}
     </>)

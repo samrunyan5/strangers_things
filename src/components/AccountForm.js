@@ -26,7 +26,6 @@ const AccountForm = ({type, setToken, setUser, setAccountFormStatus}) => {
         })
         const data = await response.json()
         setAccountFormStatus(data.success ? data.data.message : <div>{data.error.message}.</div>)
-        console.log('data: ', data)
 
         const token = data.success ? data.data.token : ''
         if (token) {

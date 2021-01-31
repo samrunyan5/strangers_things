@@ -6,7 +6,9 @@ import {
     AccountForm,
     Home,
     Posts,
-    PostForm
+    PostForm,
+    ViewPost,
+    SendMessage
 } from './components';
 
 const App = () => {
@@ -14,13 +16,13 @@ const App = () => {
     const [token, setToken] = React.useState('')
     const [accountFormStatus, setAccountFormStatus] = React.useState('')
     const [postList, setPostList] = React.useState([])
+    const [post, setPost] = React.useState({})
     const history = useHistory()
 
     const handleLogout = (event) => {
         event.preventDefault()
         setUser({})
         setToken('')
-        setAccountFormStatus("You have been logged out. Sign back in when you're ready.")
         history.push('/')
     }
 
@@ -40,16 +42,22 @@ const App = () => {
             <Home user={user} setAccountFormStatus={setAccountFormStatus} />
         </Route>
         <Route path='/newpost'>
-            <PostForm token={token} postList={postList} setPostList={setPostList} />
+            <PostForm token={token} />
         </Route>
         <Route path='/posts'>
-            <Posts setAccountFormStatus={setAccountFormStatus} token={token} postList={postList} setPostList={setPostList} />
+            <Posts setAccountFormStatus={setAccountFormStatus} token={token} postList={postList} setPostList={setPostList} setPost={setPost} />
         </Route>
         <Route path='/login'>
             <AccountForm type={'login'} setToken={setToken} setUser={setUser} setAccountFormStatus={setAccountFormStatus} /> 
         </Route>
         <Route path='/register'>
             <AccountForm type={'register'} setToken={setToken} setUser={setUser} setAccountFormStatus={setAccountFormStatus} /> 
+        </Route>
+        <Route path='/viewpost'>
+            <ViewPost />
+        </Route>
+        <Route path='/sendmessage'>
+            <SendMessage post={post} token={token} accountFormStatus={accountFormStatus} setAccountFormStatus={setAccountFormStatus} />
         </Route>
     </div>)
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ViewPost = ({post, token}) => {
+const ViewPost = ({post, token, accountFormStatus, setAccountFormStatus}) => {
     const {_id, title, description, price, author, location, isAuthor} = post
 
     const handleDelete = async (event) => {
@@ -14,20 +14,23 @@ const ViewPost = ({post, token}) => {
             }
         })
         const data = await response.json()
-        console.log(data)
-        alert('are you super sure?')
+        setAccountFormStatus('This post has been removed.')
     }
 
     return (<>
-        <div className='post' key={_id}>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <p>Price: {price}</p>
-            <p>Seller: {author.username}</p>
-            <p>Location: {location}</p>
-            <br/>
-            {token && isAuthor ? <button>Edit</button> : ''}
-            {token && isAuthor ? <button onClick={handleDelete}>Delete</button> : ''}
+        <div className='view-post' key={_id}>
+            {!accountFormStatus ? 
+            <>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <p>Price: {price}</p>
+                <p>Seller: {author.username}</p>
+                <p>Location: {location}</p>
+                <br/>
+                {token && isAuthor ? <button>Edit</button> : ''}
+                {token && isAuthor ? <button onClick={handleDelete}>Delete</button> : ''}
+            </>
+            : ''}
         </div>
     </>)
 }

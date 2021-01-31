@@ -29,8 +29,7 @@ const Posts = ({setAccountFormStatus, token, postList, setPostList, setPost}) =>
                 <p>Seller: {author.username}</p>
                 <p>Location: {location}</p>
                 {token && !isAuthor ? <Link to='/sendmessage'><button onClick={() => setPost(post)}>Send Message</button></Link> : ''}
-                {token && isAuthor ? <Link to='/viewpost'><button>View</button></Link> : ''}
-                {token && isAuthor ? <button>Delete</button> : ''}
+                {token && isAuthor ? <Link to='/viewpost'><button onClick={() => setPost(post)}>View</button></Link> : ''}
             </div>
         })}
     </>)

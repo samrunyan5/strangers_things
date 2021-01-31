@@ -1,5 +1,4 @@
 import React from 'react';
-import Posts from './Posts';
 
 const SendMessage = ({post, token, accountFormStatus, setAccountFormStatus}) => {
     const [content, setContent] = React.useState('')
@@ -21,7 +20,6 @@ const SendMessage = ({post, token, accountFormStatus, setAccountFormStatus}) => 
             })
         })
         const data = await response.json()
-        console.log(data)
         setContent('')
         setAccountFormStatus(data.success ? <div>Your Message has been sent.</div> : <div>Oh no... An error occurred.</div>)
 
@@ -30,7 +28,6 @@ const SendMessage = ({post, token, accountFormStatus, setAccountFormStatus}) => 
     return (<>
         <div className='post' key={_id}>
             <form onSubmit={handleSubmit}>
-                {console.log('post: ', post)}
                 <h3>{title}</h3>
                 <p>{description}</p>
                 <p>Price: {price}</p>

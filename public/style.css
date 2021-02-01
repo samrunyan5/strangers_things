@@ -1,10 +1,14 @@
 * {
-    padding: 0;
-    margin: 2px;
-    border: 0;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
     box-sizing: border-box;
     font-family: 'Calibri';
-  }
+}
+
+body {
+    margin: 0% 20% 0% 20%;
+}
 
 input {
     border: 1px solid black;
@@ -24,4 +28,57 @@ button {
 
 .post {
     margin-bottom: 20px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: darkseagreen;
+    padding: 10px;
+    color: white;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.home-page-text {
+    text-align: center;
+    font-size: 18px;
+}
+
+.account-form {
+    text-align: center;
+    margin: 0% 33% 0% 33%;
+}
+
+.account-form input {
+    width: 20em;
+    height: 2em;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.account-form button {
+    width: 20em;
+    height: 2em;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: gray;
+}
+
+.account-form div {
+    text-align: left;
+    padding-left: 2px;
+    font-size: 18px;
+}
+
+.opposite-account-form a {
+    font-size: 16px;
 }

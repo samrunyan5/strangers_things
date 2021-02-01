@@ -6,7 +6,7 @@ const AccountForm = ({type, setToken, setUser}) => {
     const [password, setPassword] = React.useState('')
     const [loginMessage, setLoginMessage] = React.useState('')
     const history = useHistory()
-    const title = type === 'login' ? 'Login' : 'Register'
+    const title = type === 'login' ? 'LOGIN' : 'REGISTER'
     const oppositeTitle = type === 'login' ? 'Not yet registered? Sign up here!' : 'Already registered? Login here!'
     const oppositeType = type === 'login' ? 'register' : 'login'
 
@@ -45,22 +45,22 @@ const AccountForm = ({type, setToken, setUser}) => {
         }
     }
 
-    return (<>
+    return (<div className='account-form'>
         <>{loginMessage}</>
-        <h3>{title}</h3>
+        <h2>{title}</h2>
         <form onSubmit={handleSubmit}>
             <div>
-                <div>Username </div>
-                <input type='text' value={username} placeholder='Username' minLength='8' maxLength='20' required onChange={event => setUsername(event.target.value)}></input>
+                <div>USERNAME </div>
+                <input type='text' value={username} minLength='8' maxLength='20' required onChange={event => setUsername(event.target.value)}></input>
             </div>
             <div>
-                <div>Password </div>
-                <input type='password' value={password} placeholder='Password' minLength='8' maxLength='20' required onChange={event => setPassword(event.target.value)}></input>
+                <div>PASSWORD </div>
+                <input type='password' value={password} minLength='8' maxLength='20' required onChange={event => setPassword(event.target.value)}></input>
             </div>
             <button type='submit'>{title}</button>
         </form>
-        <Link to={`/${oppositeType}`}>{oppositeTitle}</Link>
-    </>)
+        <div className='opposite-account-form'><Link to={`/${oppositeType}`}>{oppositeTitle}</Link></div>
+    </div>)
 }
 
 export default AccountForm;

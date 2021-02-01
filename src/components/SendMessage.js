@@ -22,11 +22,13 @@ const SendMessage = ({post, token}) => {
         })
         const data = await response.json()
         setContent('')
-        setSentMessage(data.success ? <div>Your message has been sent.</div> : <div>Oh no... An error occurred.</div>)
+        setSentMessage(data.success ? <div>Your message has been sent!</div> : <div>Oh no... An error occurred.</div>)
     }
     
     return (<>
         <div className='post' key={_id}>
+            {!sentMessage ? 
+            <>
             <form onSubmit={handleSubmit}>
                 <h3>{title}</h3>
                 <p>{description}</p>
@@ -39,6 +41,8 @@ const SendMessage = ({post, token}) => {
                 <div><input required type='text' value={content} onChange={event => setContent(event.target.value)} ></input></div>
                 <button type='submit'>Send Message</button>
             </form>
+            </>
+            : <>{sentMessage}</>}
         </div>
     </>)
 }

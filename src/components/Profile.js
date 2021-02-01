@@ -11,10 +11,10 @@ const Profile = ({token, user, setUser}) => {
         })
         const meData = await response.json()
         setUser(meData.data)
-    }, {})
+    }, [])
 
     return (<>
-        <h2>Messages to Me</h2>
+        <h2>MESSAGES TO ME</h2>
         {user.messages.map(message => {
             console.log(message)
             const {fromUser, post, content, _id} = message
@@ -27,7 +27,7 @@ const Profile = ({token, user, setUser}) => {
             </div>
             : ''
         })}
-        <h2>Messages from Me</h2>
+        <h2>MESSAGES FROM ME</h2>
         {user.messages.map(message => {
             const {fromUser, post, content, _id} = message
             return user.username === fromUser.username ?

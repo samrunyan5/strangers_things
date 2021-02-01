@@ -15,13 +15,14 @@ const ViewPost = ({post, token}) => {
             }
         })
         const data = await response.json()
-        setDeleteMessage('This post has been removed.')
+        setDeleteMessage( data.success ? 'This post has been removed.' : 'Oh no... An error occurred.')
     }
 
     return (<>
         <div className='view-post' key={_id}>
             {!deleteMessage ? 
             <>
+                <h2>VIEW POST</h2>
                 <h3>{title}</h3>
                 <p>{description}</p>
                 <p>Price: {price}</p>

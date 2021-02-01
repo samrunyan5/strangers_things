@@ -6,6 +6,7 @@ const PostForm = ({token}) => {
     const [price, setPrice] = React.useState('')
     const [location, setLocation] = React.useState('')
     const [willDeliver, setWillDeliver] = React.useState(false)
+    const [postMessage, setPostMessage] = React.useState('')
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -32,9 +33,12 @@ const PostForm = ({token}) => {
         setPrice('')
         setLocation('')
         setWillDeliver('')
+        setPostMessage(data.success ? 'Your post has been added.' : 'Oh no... An error occurred.')
     }
     
     return (<>
+        {!postMessage ? 
+        <>
         <h2>CREATE A NEW POST</h2>
         <form onSubmit={handleSubmit}>
             <div>
@@ -58,6 +62,8 @@ const PostForm = ({token}) => {
             </div>
             <button type='submit'>Add New Post</button>
         </form>
+        </> 
+        : <div>{postMessage}</div>}
     </>)
 }
 

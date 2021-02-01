@@ -15,7 +15,6 @@ import {
 const App = () => {
     const [user, setUser] =React.useState({})
     const [token, setToken] = React.useState('')
-    const [postList, setPostList] = React.useState([])
     const [post, setPost] = React.useState({})
     const history = useHistory()
 
@@ -27,15 +26,19 @@ const App = () => {
     }
 
     return (<div id='app'>
-        <h1>Stranger's Things</h1>
-        <nav>
-            <Link to='/'>HOME</Link>
-            <Link to='/newpost' className={user.username ? '' : 'loggedOut'} >NEW POST</Link>
-            <Link to='/posts'>POSTS</Link>
-            <Link to='/profile' className={user.username ? '' : 'loggedOut'} >PROFILE</Link>
-            <Link to='/' className={user.username ? '' : 'loggedOut'} onClick={handleLogout}>LOGOUT</Link>
-            <Link to='/login' className={!user.username ? '' : 'loggedOut'} >LOGIN</Link>
-        </nav>
+        <div className='header-container'>
+            <h1>Stranger's Things</h1>
+            <nav>
+                <div className='nav-links'>
+                <Link to='/'>HOME</Link>
+                <Link to='/newpost' className={user.username ? '' : 'loggedOut'} >NEW POST</Link>
+                <Link to='/posts'>POSTS</Link>
+                <Link to='/profile' className={user.username ? '' : 'loggedOut'} >PROFILE</Link>
+                <Link to='/' className={user.username ? '' : 'loggedOut'} onClick={handleLogout}>LOGOUT</Link>
+                <Link to='/login' className={!user.username ? '' : 'loggedOut'} >LOGIN</Link>
+                </div>
+            </nav>
+        </div>
         <br />
         <Route exact path='/'>
             <Home user={user} />
@@ -44,7 +47,7 @@ const App = () => {
             <PostForm token={token} />
         </Route>
         <Route path='/posts'>
-            <Posts token={token} postList={postList} setPostList={setPostList} setPost={setPost} />
+            <Posts token={token} setPost={setPost} />
         </Route>
         <Route path='/login'>
             <AccountForm type={'login'} setToken={setToken} setUser={setUser} /> 
@@ -53,7 +56,7 @@ const App = () => {
             <AccountForm type={'register'} setToken={setToken} setUser={setUser} /> 
         </Route>
         <Route path='/viewpost'>
-            <ViewPost post={post} token={token} setPost={setPost} />
+            <ViewPost post={post} token={token} />
         </Route>
         <Route path='/sendmessage'>
             <SendMessage post={post} token={token} />

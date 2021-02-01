@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import {BrowserRouter as Router, Route, Link, useHistory} from 'react-router-dom';
 
-const Posts = ({setAccountFormStatus, token, postList, setPostList, setPost}) => {
+const Posts = ({token, postList, setPostList, setPost}) => {
     const history = useHistory()
-    setAccountFormStatus('')
 
     useEffect(async () => {
         const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/posts`, {
@@ -18,6 +17,9 @@ const Posts = ({setAccountFormStatus, token, postList, setPostList, setPost}) =>
 
     return (<>
         <h2>POSTS</h2>
+        <form>
+            <div>Search: <input type='text' ></input></div>
+        </form>
         {postList.map(post => {
             const {_id, title, description, price, author, location, isAuthor} = post
 

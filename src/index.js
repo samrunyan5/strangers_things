@@ -15,7 +15,6 @@ import {
 const App = () => {
     const [user, setUser] =React.useState({})
     const [token, setToken] = React.useState('')
-    const [accountFormStatus, setAccountFormStatus] = React.useState('')
     const [postList, setPostList] = React.useState([])
     const [post, setPost] = React.useState({})
     const history = useHistory()
@@ -38,27 +37,26 @@ const App = () => {
             <Link to='/login' className={!user.username ? '' : 'loggedOut'} >LOGIN</Link>
         </nav>
         <br />
-        {accountFormStatus ? accountFormStatus : ''}
         <Route exact path='/'>
-            <Home user={user} setAccountFormStatus={setAccountFormStatus} />
+            <Home user={user} />
         </Route>
         <Route path='/newpost'>
             <PostForm token={token} />
         </Route>
         <Route path='/posts'>
-            <Posts setAccountFormStatus={setAccountFormStatus} token={token} postList={postList} setPostList={setPostList} setPost={setPost} />
+            <Posts token={token} postList={postList} setPostList={setPostList} setPost={setPost} />
         </Route>
         <Route path='/login'>
-            <AccountForm type={'login'} setToken={setToken} setUser={setUser} setAccountFormStatus={setAccountFormStatus} /> 
+            <AccountForm type={'login'} setToken={setToken} setUser={setUser} /> 
         </Route>
         <Route path='/register'>
-            <AccountForm type={'register'} setToken={setToken} setUser={setUser} setAccountFormStatus={setAccountFormStatus} /> 
+            <AccountForm type={'register'} setToken={setToken} setUser={setUser} /> 
         </Route>
         <Route path='/viewpost'>
-            <ViewPost post={post} token={token} setPost={setPost} accountFormStatus={accountFormStatus} setAccountFormStatus={setAccountFormStatus} />
+            <ViewPost post={post} token={token} setPost={setPost} />
         </Route>
         <Route path='/sendmessage'>
-            <SendMessage post={post} token={token} accountFormStatus={accountFormStatus} setAccountFormStatus={setAccountFormStatus} />
+            <SendMessage post={post} token={token} />
         </Route>
         <Route path='/profile'>
             <Profile token={token} user={user} setUser={setUser} />

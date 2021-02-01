@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Home = ({user, setAccountFormStatus}) => {
-    setAccountFormStatus('')
+const Home = ({user}) => {
 
     return (<>
         <h2>Welcome to Stranger's Things!</h2>

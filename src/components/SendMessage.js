@@ -1,7 +1,8 @@
 import React from 'react';
 
-const SendMessage = ({post, token, accountFormStatus, setAccountFormStatus}) => {
+const SendMessage = ({post, token}) => {
     const [content, setContent] = React.useState('')
+    const [sentMessage, setSentMessage] = React.useState('')
     const {_id, title, description, price, author, location} = post
 
     const handleSubmit = async (event) => {
@@ -21,8 +22,7 @@ const SendMessage = ({post, token, accountFormStatus, setAccountFormStatus}) => 
         })
         const data = await response.json()
         setContent('')
-        setAccountFormStatus(data.success ? <div>Your Message has been sent.</div> : <div>Oh no... An error occurred.</div>)
-
+        setSentMessage(data.success ? <div>Your message has been sent.</div> : <div>Oh no... An error occurred.</div>)
     }
     
     return (<>
@@ -34,7 +34,7 @@ const SendMessage = ({post, token, accountFormStatus, setAccountFormStatus}) => 
                 <p>Seller: {author.username}</p>
                 <p>Location: {location}</p>
                 <br/>
-                <h2>{accountFormStatus}</h2>
+                <>{sentMessage}</>
                 <h3>Message {author.username} about this Post</h3>
                 <div><input required type='text' value={content} onChange={event => setContent(event.target.value)} ></input></div>
                 <button type='submit'>Send Message</button>

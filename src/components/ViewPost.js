@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ViewPost = ({post, token, accountFormStatus, setAccountFormStatus}) => {
+const ViewPost = ({post, token}) => {
+    const [deleteMessage, setDeleteMessage] = React.useState('')
     const {_id, title, description, price, author, location, isAuthor} = post
 
     const handleDelete = async (event) => {
@@ -14,12 +15,12 @@ const ViewPost = ({post, token, accountFormStatus, setAccountFormStatus}) => {
             }
         })
         const data = await response.json()
-        setAccountFormStatus('This post has been removed.')
+        setDeleteMessage('This post has been removed.')
     }
 
     return (<>
         <div className='view-post' key={_id}>
-            {!accountFormStatus ? 
+            {!deleteMessage ? 
             <>
                 <h3>{title}</h3>
                 <p>{description}</p>
@@ -30,7 +31,7 @@ const ViewPost = ({post, token, accountFormStatus, setAccountFormStatus}) => {
                 {token && isAuthor ? <button>Edit</button> : ''}
                 {token && isAuthor ? <button onClick={handleDelete}>Delete</button> : ''}
             </>
-            : ''}
+            : <div>{deleteMessage}</div>}
         </div>
     </>)
 }

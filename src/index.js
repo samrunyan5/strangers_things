@@ -8,7 +8,8 @@ import {
     Posts,
     PostForm,
     ViewPost,
-    SendMessage
+    SendMessage,
+    Profile
 } from './components';
 
 const App = () => {
@@ -58,6 +59,9 @@ const App = () => {
         </Route>
         <Route path='/sendmessage'>
             <SendMessage post={post} token={token} accountFormStatus={accountFormStatus} setAccountFormStatus={setAccountFormStatus} />
+        </Route>
+        <Route path='/profile'>
+            <Profile token={token} user={user} setUser={setUser} />
         </Route>
     </div>)
 }

@@ -47,7 +47,7 @@ const PostForm = ({token}) => {
             </div>
             <div>
                 <div>Description</div>
-                <input required type='text' value={description} onChange={event => setDescription(event.target.value)}></input>
+                <div><textarea required value={description} onChange={event => setDescription(event.target.value)} ></textarea></div>
             </div>
             <div>
                 <div>Price</div>

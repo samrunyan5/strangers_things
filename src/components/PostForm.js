@@ -36,10 +36,10 @@ const PostForm = ({token}) => {
         setPostMessage(data.success ? 'Your post has been added.' : 'Oh no... An error occurred.')
     }
     
-    return (<>
+    return (<div className='post-form'>
+            <h2>CREATE A NEW POST</h2>
         {!postMessage ? 
         <>
-        <h2>CREATE A NEW POST</h2>
         <form onSubmit={handleSubmit}>
             <div>
                 <div>Title</div>
@@ -57,14 +57,14 @@ const PostForm = ({token}) => {
                 <div>Location</div>
                 <input type='text' value={location} onChange={event => setLocation(event.target.value)}></input>
             </div>
-            <div>
+            <div className='post-form-checkbox'>
                 <div>Willing to Deliver? <input type='checkbox' value={willDeliver} onChange={event => setWillDeliver(!willDeliver)}></input></div>
             </div>
-            <button type='submit'>Add New Post</button>
+            <button type='submit'>ADD NEW POST</button>
         </form>
         </> 
-        : <div>{postMessage}</div>}
-    </>)
+        : <div className='post-success'>{postMessage}</div>}
+    </div>)
 }
 
 export default PostForm;

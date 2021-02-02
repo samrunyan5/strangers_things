@@ -13,17 +13,15 @@ const Profile = ({token, user, setUser}) => {
         setUser(meData.data)
     }, [])
 
-    return (<>
+    return (<div className='profile'>
         <h2>MESSAGES TO ME</h2>
         {user.messages.map(message => {
-            console.log(message)
             const {fromUser, post, content, _id} = message
             return user.username !== fromUser.username ? 
-            <div key={_id}>
-                <h3>{post.title}</h3>
-                <h4>From: {fromUser.username}</h4>
-                <p>{content}</p>
-                <br />
+            <div className='messages' key={_id}>
+                <h3>{post.title.toUpperCase()}</h3>
+                <p><b>From: {fromUser.username}</b></p>
+                <p className='view-message'>{content}</p>
             </div>
             : ''
         })}
@@ -31,14 +29,13 @@ const Profile = ({token, user, setUser}) => {
         {user.messages.map(message => {
             const {fromUser, post, content, _id} = message
             return user.username === fromUser.username ?
-            <div key={_id}>
-                <h3>{post.title}</h3>
-                <p>{content}</p>
-                <br />
+            <div className='messages' key={_id}>
+                <h3>{post.title.toUpperCase()}</h3>
+                <p className='view-message'>{content}</p>
             </div>
             : ''
         })}
-    </>)
+    </div>)
 
 }
 

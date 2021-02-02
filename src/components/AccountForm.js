@@ -50,11 +50,11 @@ const AccountForm = ({type, setToken, setUser}) => {
         <h2>{title}</h2>
         <form onSubmit={handleSubmit}>
             <div>
-                <div>USERNAME </div>
+                <div>Username </div>
                 <input type='text' value={username} minLength='8' maxLength='20' required onChange={event => setUsername(event.target.value)}></input>
             </div>
             <div>
-                <div>PASSWORD </div>
+                <div>Password </div>
                 <input type='password' value={password} minLength='8' maxLength='20' required onChange={event => setPassword(event.target.value)}></input>
             </div>
             <button type='submit'>{title}</button>

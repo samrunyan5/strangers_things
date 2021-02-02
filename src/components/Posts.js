@@ -28,28 +28,28 @@ const Posts = ({token, setPost}) => {
     })
     const postsToDisplay = searchTerm ? filteredPosts : postList
 
-    return (<>
+    return (<div className='posts'>
         <h2>POSTS</h2>
         <form onSubmit={async (event) => {
             event.preventDefault();
-
+            
         }}>
-            <div>Search: <input type='text' value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} ></input></div>
+            <div><input type='text' placeholder='Search' value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} ></input></div>
         </form>
         {postsToDisplay.map(post => {
             const {_id, title, description, price, author, location, isAuthor} = post
 
             return <div className='post' key={_id}>
-                <h3>{title}</h3>
+                <h3>{title.toUpperCase()}</h3>
                 <p>{description}</p>
-                <p>Price: {price}</p>
-                <p>Seller: {author.username}</p>
-                <p>Location: {location}</p>
-                {token && !isAuthor ? <Link to='/sendmessage'><button onClick={() => setPost(post)}>Send Message</button></Link> : ''}
-                {token && isAuthor ? <Link to='/viewpost'><button onClick={() => setPost(post)}>View</button></Link> : ''}
+                <p><b>Price</b>: {price}</p>
+                <p><b>Seller: {author.username}</b></p>
+                <p><b>Location</b>: {location}</p>
+                {token && !isAuthor ? <Link to='/sendmessage'><button onClick={() => setPost(post)}>SEND MESSAGE</button></Link> : ''}
+                {token && isAuthor ? <Link to='/viewpost'><button onClick={() => setPost(post)}>VIEW</button></Link> : ''}
             </div>
         })}
-    </>)
+    </div>)
 }
 
 export default Posts;

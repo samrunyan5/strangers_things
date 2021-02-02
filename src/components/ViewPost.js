@@ -18,23 +18,23 @@ const ViewPost = ({post, token}) => {
         setDeleteMessage( data.success ? 'This post has been removed.' : 'Oh no... An error occurred.')
     }
 
-    return (<>
-        <div className='view-post' key={_id}>
-            {!deleteMessage ? 
+    return (<div className='view-post'>
+        <h2>VIEW POST</h2>
             <>
-                <h2>VIEW POST</h2>
-                <h3>{title}</h3>
-                <p>{description}</p>
-                <p>Price: {price}</p>
-                <p>Seller: {author.username}</p>
-                <p>Location: {location}</p>
-                <br/>
-                {token && isAuthor ? <button>Edit</button> : ''}
-                {token && isAuthor ? <button onClick={handleDelete}>Delete</button> : ''}
-            </>
-            : <div>{deleteMessage}</div>}
-        </div>
-    </>)
+            {!deleteMessage ? 
+                <div className='post' key={_id}>
+                    <h3>{title.toUpperCase()}</h3>
+                    <p>{description}</p>
+                    <p><b>Price</b>: {price}</p>
+                    <p><b>Seller: {author.username}</b></p>
+                    <p><b>Location</b>: {location}</p>
+                    <br/>
+                    {token && isAuthor ? <button>EDIT</button> : ''}
+                    {token && isAuthor ? <button id='danger-button' onClick={handleDelete}>DELETE</button> : ''}
+            </div>
+            : <div className='delete-message'>{deleteMessage}</div>}
+        </>
+    </div>)
 }
 
 export default ViewPost;

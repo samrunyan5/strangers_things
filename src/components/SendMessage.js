@@ -30,16 +30,16 @@ const SendMessage = ({post, token}) => {
             {!sentMessage ? 
             <>
             <form onSubmit={handleSubmit}>
-                <h3>{title}</h3>
+                <h3>{title.toUpperCase()}</h3>
                 <p>{description}</p>
-                <p>Price: {price}</p>
-                <p>Seller: {author.username}</p>
-                <p>Location: {location}</p>
+                <p><b>Price</b>: {price}</p>
+                <p><b>Seller: {author.username}</b></p>
+                <p><b>Location</b>: {location}</p>
                 <br/>
                 <>{sentMessage}</>
                 <h3>Message {author.username} about this Post</h3>
                 <div><input required type='text' value={content} onChange={event => setContent(event.target.value)} ></input></div>
-                <button type='submit'>Send Message</button>
+                <button type='submit'>SEND MESSAGE</button>
             </form>
             </>
             : <>{sentMessage}</>}

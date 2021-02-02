@@ -27,7 +27,7 @@ const App = () => {
 
     return (<div id='app'>
         <div className='header-container'>
-            <h1>Stranger's Things</h1>
+            <h1>STRANGER'S THINGS</h1>
             <nav>
                 <div className='nav-links'>
                 <Link to='/'>HOME</Link>

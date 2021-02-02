@@ -1,11 +1,11 @@
 import React from 'react';
 
-const PostForm = ({token}) => {
-    const [title, setTitle] = React.useState('')
-    const [description, setDescription] = React.useState('')
-    const [price, setPrice] = React.useState('')
-    const [location, setLocation] = React.useState('')
-    const [willDeliver, setWillDeliver] = React.useState(false)
+const PostForm = ({token, title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver }) => {
+    // const [title, setTitle] = React.useState('')
+    // const [description, setDescription] = React.useState('')
+    // const [price, setPrice] = React.useState('')
+    // const [location, setLocation] = React.useState('')
+    // const [willDeliver, setWillDeliver] = React.useState(false)
     const [postMessage, setPostMessage] = React.useState('')
 
     const handleSubmit = async (event) => {
@@ -37,7 +37,7 @@ const PostForm = ({token}) => {
     }
     
     return (<div className='post-form'>
-            <h2>CREATE A NEW POST</h2>
+        <h2>CREATE A NEW POST</h2>
         {!postMessage ? 
         <>
         <form onSubmit={handleSubmit}>
@@ -57,8 +57,8 @@ const PostForm = ({token}) => {
                 <div>Location</div>
                 <input type='text' value={location} onChange={event => setLocation(event.target.value)}></input>
             </div>
-            <div className='post-form-checkbox'>
-                <div>Willing to Deliver? <input type='checkbox' value={willDeliver} onChange={event => setWillDeliver(!willDeliver)}></input></div>
+            <div>
+                <div>Willing to Deliver? <input className='post-form-checkbox' type='checkbox' value={willDeliver} onChange={event => setWillDeliver(!willDeliver)}></input></div>
             </div>
             <button type='submit'>ADD NEW POST</button>
         </form>

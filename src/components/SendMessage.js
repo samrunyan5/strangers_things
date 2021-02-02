@@ -39,7 +39,6 @@ const SendMessage = ({post, token}) => {
                 <>{sentMessage}</>
                 <h3>Message {author.username} about this Post</h3>
                 <div><textarea required value={content} onChange={event => setContent(event.target.value)} ></textarea></div>
-                {/* <div><input required type='text' value={content} onChange={event => setContent(event.target.value)} ></input></div> */}
                 <button type='submit'>SEND MESSAGE</button>
             </form>
             </>

@@ -16,24 +16,16 @@ const Posts = ({token, setPost}) => {
         setPostList(posts)
     }, [])
 
-    const postMatches = (post, text) => {
-        if (post.title.includes(text) || post.description.includes(text)) {
-            console.log('searchterm: ', searchTerm)
+    const filteredPosts = postList.filter(post => {
+        if (post.title.toLowerCase().includes(searchTerm) || post.description.toLowerCase().includes(searchTerm)) {
             return true
         }
-    }
-
-    const filteredPosts = postList.filter(post => {
-        postMatches(post, searchTerm)
     })
     const postsToDisplay = searchTerm ? filteredPosts : postList
 
     return (<div className='posts'>
         <h2>POSTS</h2>
-        <form onSubmit={async (event) => {
-            event.preventDefault();
-            
-        }}>
+        <form onSubmit={async (event) => event.preventDefault() }>
             <div><input type='text' placeholder='Search' value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} ></input></div>
         </form>
         {postsToDisplay.map(post => {

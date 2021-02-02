@@ -9,13 +9,19 @@ import {
     PostForm,
     ViewPost,
     SendMessage,
-    Profile
+    Profile,
+    EditPost
 } from './components';
 
 const App = () => {
     const [user, setUser] =React.useState({})
     const [token, setToken] = React.useState('')
     const [post, setPost] = React.useState({})
+    const [title, setTitle] = React.useState('')
+    const [description, setDescription] = React.useState('')
+    const [price, setPrice] = React.useState('')
+    const [location, setLocation] = React.useState('')
+    const [willDeliver, setWillDeliver] = React.useState(false)
     const history = useHistory()
 
     const handleLogout = (event) => {
@@ -44,7 +50,7 @@ const App = () => {
             <Home user={user} />
         </Route>
         <Route path='/newpost'>
-            <PostForm token={token} />
+            <PostForm token={token} title={title} setTitle={setTitle} description={description} setDescription={setDescription} price={price} setPrice={setPrice} location={location} setLocation={setLocation} willDeliver={willDeliver} setWillDeliver={setWillDeliver} />
         </Route>
         <Route path='/posts'>
             <Posts token={token} setPost={setPost} />
@@ -63,6 +69,9 @@ const App = () => {
         </Route>
         <Route path='/profile'>
             <Profile token={token} user={user} setUser={setUser} />
+        </Route>
+        <Route path='/editpost'>
+            <EditPost token={token} post={post} setPost={setPost} title={title} setTitle={setTitle} description={description} setDescription={setDescription} price={price} setPrice={setPrice} location={location} setLocation={setLocation} willDeliver={willDeliver} setWillDeliver={setWillDeliver} />
         </Route>
     </div>)
 }

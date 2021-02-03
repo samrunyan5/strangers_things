@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ViewPost = ({post, token}) => {
+const ViewPost = ({post, token, setTitle, setDescription, setPrice, setLocation, setWillDeliver}) => {
     const [deleteMessage, setDeleteMessage] = React.useState('')
-    const {_id, title, description, price, author, location, isAuthor} = post
+    const {_id, title, description, price, author, location, isAuthor, willDeliver} = post
 
     const handleDelete = async (event) => {
         event.preventDefault();
@@ -19,6 +19,14 @@ const ViewPost = ({post, token}) => {
         setDeleteMessage( data.success ? 'This post has been removed.' : 'Oh no... An error occurred.')
     }
 
+    const handleClick = () => {
+        setTitle(title)
+        setDescription(description)
+        setPrice(price)
+        setLocation(location)
+        setWillDeliver(willDeliver)
+    }
+
     return (<div className='view-post'>
         <h2>VIEW POST</h2>
             <>
@@ -30,7 +38,7 @@ const ViewPost = ({post, token}) => {
                     <p><b>Seller: {author.username}</b></p>
                     <p><b>Location</b>: {location}</p>
                     <br/>
-                    {token && isAuthor ? <Link to='/editpost'><button>EDIT</button></Link> : ''}
+                    {token && isAuthor ? <Link to='/editpost'><button onClick={handleClick}>EDIT</button></Link> : ''}
                     {token && isAuthor ? <button id='danger-button' onClick={handleDelete}>DELETE</button> : ''}
             </div>
             : <div className='delete-message'>{deleteMessage}</div>}

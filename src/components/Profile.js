@@ -10,6 +10,7 @@ const Profile = ({token, user, setUser}) => {
             }
         })
         const meData = await response.json()
+        console.log(meData)
         setUser(meData.data)
     }, [])
 
@@ -20,6 +21,7 @@ const Profile = ({token, user, setUser}) => {
             return user.username !== fromUser.username ? 
             <div className='messages' key={_id}>
                 <h3>{post.title.toUpperCase()}</h3>
+                {console.log(post.title)}
                 <p><b>From: {fromUser.username}</b></p>
                 <p className='view-message'>{content}</p>
             </div>

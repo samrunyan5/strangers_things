@@ -62,7 +62,7 @@ const App = () => {
             <AccountForm type={'register'} setToken={setToken} setUser={setUser} /> 
         </Route>
         <Route path='/viewpost'>
-            <ViewPost post={post} token={token} />
+            <ViewPost post={post} token={token} setTitle={setTitle} setDescription={setDescription} setPrice={setPrice} setLocation={setLocation} setWillDeliver={setWillDeliver} />
         </Route>
         <Route path='/sendmessage'>
             <SendMessage post={post} token={token} />

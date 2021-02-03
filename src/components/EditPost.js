@@ -1,9 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-const EditPost = ({token, post, setPost, title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver}) => {
+const EditPost = ({token, post, title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver}) => {
     const [editMessage, setEditMessage] = React.useState('')
-    // const {_id, title, description, price, author, location, isAuthor} = post
-    console.log('post: ', post)
     
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -26,12 +24,6 @@ const EditPost = ({token, post, setPost, title, setTitle, description, setDescri
         })
         const data = await response.json()
         console.log(data)
-        setPost(data)
-        setTitle('')
-        setDescription('')
-        setPrice('')
-        setLocation('')
-        setWillDeliver('')
         setEditMessage(data.success ? 'Your post has been updated.' : 'Oh no... An error occurred.')
     }
 
@@ -42,22 +34,22 @@ const EditPost = ({token, post, setPost, title, setTitle, description, setDescri
         <form onSubmit={handleSubmit}>
             <div>
                 <div>Title</div>
-                <input required type='text' value={post.title} onChange={event => setTitle(event.target.value)}></input>
+                <input required type='text' value={title} onChange={event => setTitle(event.target.value)}></input>
             </div>
             <div>
                 <div>Description</div>
-                <div><textarea required value={post.description} onChange={event => setDescription(event.target.value)} ></textarea></div>
+                <div><textarea required value={description} onChange={event => setDescription(event.target.value)} ></textarea></div>
             </div>
             <div>
                 <div>Price</div>
-                <input required type='text' value={post.price} onChange={event => setPrice(event.target.value)}></input>
+                <input required type='text' value={price} onChange={event => setPrice(event.target.value)}></input>
             </div>
             <div>
                 <div>Location</div>
-                <input type='text' value={post.location} onChange={event => setLocation(event.target.value)}></input>
+                <input type='text' value={location} onChange={event => setLocation(event.target.value)}></input>
             </div>
             <div>
-                <div>Willing to Deliver? <input className='post-form-checkbox' type='checkbox' value={post.willDeliver} onChange={event => setWillDeliver(!willDeliver)}></input></div>
+                <div>Willing to Deliver? <input className='post-form-checkbox' type='checkbox' value={willDeliver} onChange={event => setWillDeliver(!willDeliver)}></input></div>
             </div>
             <button type='submit'>EDIT POST</button>
         </form>

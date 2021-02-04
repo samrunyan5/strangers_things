@@ -23,7 +23,11 @@ const EditPost = ({token, post, title, setTitle, description, setDescription, pr
             })
         })
         const data = await response.json()
-        console.log(data)
+        setTitle('')
+        setDescription('')
+        setPrice('')
+        setLocation('')
+        setWillDeliver('')
         setEditMessage(data.success ? 'Your post has been updated.' : 'Oh no... An error occurred.')
     }
 

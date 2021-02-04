@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const PostForm = ({token, title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver }) => {
-    // const [title, setTitle] = React.useState('')
-    // const [description, setDescription] = React.useState('')
-    // const [price, setPrice] = React.useState('')
-    // const [location, setLocation] = React.useState('')
-    // const [willDeliver, setWillDeliver] = React.useState(false)
     const [postMessage, setPostMessage] = React.useState('')
+
+    useEffect(() => {
+        setTitle('')
+        setDescription('')
+        setPrice('')
+        setLocation('')
+        setWillDeliver('')
+    }, [])
 
     const handleSubmit = async (event) => {
         event.preventDefault()

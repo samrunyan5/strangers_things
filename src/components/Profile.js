@@ -33,6 +33,7 @@ const Profile = ({token, user, setUser}) => {
             return user.username === fromUser.username ?
             <div className='messages' key={_id}>
                 <h3>{post.title.toUpperCase()}</h3>
+                <p><b>From: {user.username}</b></p>
                 <p className='view-message'>{content}</p>
             </div>
             : ''

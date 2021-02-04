@@ -48,7 +48,8 @@ button {
 
 .home-page-text,
 .delete-message,
-.post-form .post-success {
+.post-form .post-success,
+.message-success {
     text-align: center;
     padding-top: 5px;
     font-size: 18px;
@@ -103,7 +104,8 @@ button {
 .posts h2,
 .posts form,
 .profile h2,
-.view-post h2 {
+.view-post h2,
+.message-heading {
     text-align: center;
 }
 
@@ -147,7 +149,8 @@ button {
     background-color: gray;
 }
 
-.view-message {
+.view-message,
+.view-post {
     padding-left: 25px;
 }
 

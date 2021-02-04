@@ -33,12 +33,14 @@ const Posts = ({token, setPost}) => {
 
             return <div className='post' key={_id}>
                 <h3>{title.toUpperCase()}</h3>
-                <p>{description}</p>
-                <p><b>Price</b>: {price}</p>
-                <p><b>Seller: {author.username}</b></p>
-                <p><b>Location</b>: {location}</p>
-                {token && !isAuthor ? <Link to='/sendmessage'><button onClick={() => setPost(post)}>SEND MESSAGE</button></Link> : ''}
-                {token && isAuthor ? <Link to='/viewpost'><button onClick={() => setPost(post)}>VIEW</button></Link> : ''}
+                <div className='view-post'>
+                    <p>{description}</p>
+                    <p><b>Price</b>: {price}</p>
+                    <p><b>Seller: {author.username}</b></p>
+                    <p><b>Location</b>: {location}</p>
+                    {token && !isAuthor ? <Link to='/sendmessage'><button onClick={() => setPost(post)}>SEND MESSAGE</button></Link> : ''}
+                    {token && isAuthor ? <Link to='/viewpost'><button onClick={() => setPost(post)}>VIEW</button></Link> : ''}
+                </div>
             </div>
         })}
     </div>)

@@ -26,7 +26,7 @@ const Posts = ({token, setPost}) => {
     return (<div className='posts'>
         <h2>POSTS</h2>
         <form onSubmit={async (event) => event.preventDefault() }>
-            <div><input type='text' placeholder='Search' value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} ></input></div>
+            <div><input type='text' placeholder='Search' value={searchTerm} onChange={(event) => setSearchTerm(event.target.value.toLowerCase())} ></input></div>
         </form>
         {postsToDisplay.map(post => {
             const {_id, title, description, price, author, location, isAuthor} = post

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
-const SendMessage = ({post, token}) => {
-    const [content, setContent] = React.useState('')
-    const [sentMessage, setSentMessage] = React.useState('')
+const SendMessage = ({post}) => {
+    const [content, setContent] = useState('')
+    const [sentMessage, setSentMessage] = useState('')
     const {_id, title, description, price, author, location} = post
+    const token = localStorage.getItem('token')
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -26,7 +27,7 @@ const SendMessage = ({post, token}) => {
         setSentMessage(data.success ? <div>Your message has been sent!</div> : <div>Oh no... An error occurred.</div>)
     }
 
-    if (token) {
+    if (token && _id) {
         return (<>
             <h2 className='message-heading'>SEND A MESSAGE</h2>
 

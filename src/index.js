@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route, Link, useHistory} from 'react-router-dom';
 
@@ -14,14 +14,14 @@ import {
 } from './components';
 
 const App = () => {
-    const [user, setUser] =React.useState({username : ''})
-    const [token, setToken] = React.useState('')
-    const [post, setPost] = React.useState({})
-    const [title, setTitle] = React.useState('')
-    const [description, setDescription] = React.useState('')
-    const [price, setPrice] = React.useState('')
-    const [location, setLocation] = React.useState('')
-    const [willDeliver, setWillDeliver] = React.useState(false)
+    const [user, setUser] = useState({username : ''})
+    const [token, setToken] = useState('')
+    const [post, setPost] = useState({})
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [price, setPrice] = useState('')
+    const [location, setLocation] = useState('')
+    const [willDeliver, setWillDeliver] = useState(false)
     const history = useHistory()
 
     useEffect( () => {

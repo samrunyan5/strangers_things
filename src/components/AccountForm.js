@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 
 const AccountForm = ({type, setToken, setUser}) => {
-    const [username, setUsername] = React.useState('')
-    const [password, setPassword] = React.useState('')
-    const [confirmPassword, setConfirmPassword] = React.useState('')
-    const [loginMessage, setLoginMessage] = React.useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const [loginMessage, setLoginMessage] = useState('')
     const history = useHistory()
     const title = type === 'login' ? 'LOGIN' : 'REGISTER'
     const oppositeTitle = type === 'login' ? 'Not yet registered? Sign up here!' : 'Already registered? Login here!'

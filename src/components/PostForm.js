@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
 const PostForm = ({token, title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver }) => {
-    const [postMessage, setPostMessage] = React.useState('')
+    const [postMessage, setPostMessage] = useState('')
 
     useEffect(() => {
         setTitle('')

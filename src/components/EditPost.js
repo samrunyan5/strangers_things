@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
 const EditPost = ({token, post, title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver}) => {
-    const [editMessage, setEditMessage] = React.useState('')
+    const [editMessage, setEditMessage] = useState('')
     
     const handleSubmit = async (event) => {
         event.preventDefault();

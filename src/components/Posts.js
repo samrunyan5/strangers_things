@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 
 const Posts = ({token, setPost}) => {
-    const [postList, setPostList] = React.useState([])
-    const [searchTerm, setSearchTerm] = React.useState('')
+    const [postList, setPostList] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(async () => {
         const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/posts`, {

@@ -8,6 +8,7 @@ const Home = ({user}) => {
         <div>Currently logged in as <b>{user.username}</b></div>
         : 
         <div>Please login above.</div>}
+        <img className='home-pic' src="/strangers_things_home_pic.jpg" />
     </div>)
 }
 

@@ -33,6 +33,8 @@ const AccountForm = ({type, setToken, setUser}) => {
             setLoginMessage(data.success ? <div>{data.data.message}</div> : <div>{data.error.message}.</div>)
 
             const token = data.success ? data.data.token : ''
+            localStorage.setItem('token', token)
+
             if (token) {
                 setToken(token)
                 const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/users/me`, {

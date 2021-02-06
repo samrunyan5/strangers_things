@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route, Link, useHistory} from 'react-router-dom';
 
@@ -14,7 +14,7 @@ import {
 } from './components';
 
 const App = () => {
-    const [user, setUser] =React.useState({})
+    const [user, setUser] =React.useState({username : ''})
     const [token, setToken] = React.useState('')
     const [post, setPost] = React.useState({})
     const [title, setTitle] = React.useState('')
@@ -24,10 +24,28 @@ const App = () => {
     const [willDeliver, setWillDeliver] = React.useState(false)
     const history = useHistory()
 
+    useEffect( () => {
+        setToken(localStorage.getItem('token'))
+        if (token) {
+            const captureToken = async () => {
+                const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/users/me`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                const meData = await response.json()
+                setUser(meData.data)
+            }
+            captureToken()
+        }
+    }, [token])
+
     const handleLogout = (event) => {
         event.preventDefault()
         setUser({})
         setToken('')
+        localStorage.clear()
         history.push('/')
     }
 
